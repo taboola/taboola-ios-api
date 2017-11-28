@@ -187,9 +187,21 @@ Returns a TBTextView which contains the title of the recommended item.
 
 ### `- (TBBrandingLabel *)brandingView`
 **Optional**
-If branding text is available for the current recommendation item, returns a TBBrandingLabel which contains the branding text for the item. In case branding text is not available returns nil.
+If branding text is available for the current recommendation item, returns a `TBBrandingLabel` which contains the branding text for the item. In case branding text is not available returns nil.
 #### **Returns:**
 * a TBBrandingLabel object configured with branding text.
+
+### `- (TBDescriptionLabel *)descriptionView`
+**Optional**
+If description text is available for the current recommendation item, returns a `TBDescriptionLabel` which contains the description text for the item. In case description text is not available returns nil.
+#### **Returns:**
+* a `TBDescriptionLabel` object configured with description text.
+
+### `- (NSDictionary *)extraDataDictionary`
+#### **Returns:**
+* a `NSDictionary  *` A dictionary with extra data elements returned from the Taboola server for the current TBItem (example fields that might be included in the dictionary: Category, Author etc..)
+
+
 ### `- (void)initTitleView:(TBTitleLabel *)titleLabel`
 Initializes a title label (TBTitleLabel instance) with the receiving TBItem object.
 
@@ -202,11 +214,19 @@ Initializes a branding label (TBBrandingLabel instance) with the receiving TBIte
 #### **Parameters:**
 * `brandingLabel` — TBBrandingLabel object to be configured
 
+
+### `- (void)initDescriptionView:(TBDescriptionLabel *)descriptionLabel`
+Initializes a description label (TBDescriptionLabel instance) with the receiving TBItem object.
+
+#### **Parameters:**
+* `descriptionLabel ` — TBDescriptionLabel object to be configured
+
 ### `- (void)initThumbnailView:(TBImageView *)imageView`
 Initializes an TBImageView instance with the receiving TBItem object.
 
 #### **Parameters:**
 * `imageView` — TBImageView object to be configured
+
 
 # TBImageView
 TBImageView is subclass of UIImageView capable  of loading and displaying thumbnail images. Detects touches.
@@ -216,3 +236,6 @@ TBTextView - subclass of UILabel for displaying TBItem title. Detects touches.
 
 # TBBrandingView
 TBBrandingView - subclass of UILabel for displaying TBItem branding text. Detects touches.
+
+# TBDescriptionView
+TBDescriptionView - subclass of UILabel for displaying TBItem description text. Detects touches.
