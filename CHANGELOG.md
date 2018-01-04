@@ -1,3 +1,7 @@
+## [1.6.9] - 2017-1-4
+### Added
+- Enable bitcode support.
+
 ## [1.6.8] - 2017-12-28
 ### Changed
 - ```available``` event is now counted automaticall on succesful getRecommendations
