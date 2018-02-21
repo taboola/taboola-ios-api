@@ -1,3 +1,7 @@
+## [1.6.14] - 2017-02-21
+### Changed
+- Cache images in NSCachesDirectory
+
 ## [1.6.9] - 2017-1-4
 ### Added
 - Enable bitcode support.
