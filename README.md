@@ -8,10 +8,11 @@
 1. [Getting Started](#1-getting-started)
 2. [Example Apps](#2-example-apps)
 3. [SDK Reference](#3-sdk-reference)
-4. [License](#4-license)
+4. [GDPR](#4-gdpr)
+5. [License](#5-license)
 
 ## Basic concepts
-The TaboolaApi allows you to get Taboola recommendations to display in your app. 
+The TaboolaApi allows you to get Taboola recommendations to display in your app.
 For each recommendation item TaboolaApi will provide pre-populated views, which you can style to match your app look and feel and place where needed within your app.
 The views will automatically handle evertything else: click handling, reporting visiblity back to Taboola's server and more.
 
@@ -57,14 +58,14 @@ Then, run the following command:
 
 ```bash
 $ pod install
-``` 
+```
 
 ### 1.3. Initialize TaboolaApi
 
 Beofre loading Taboola recommendations, apps should initialize TaboolaApi. Add the following call in your `AppDelegate` class, `didFinishLaunchingWithOptions` method:
 
 ```objc
-[[TaboolaApi sharedInstance] startWithPublisherID:@"my-publisher-id" 
+[[TaboolaApi sharedInstance] startWithPublisherID:@"my-publisher-id"
 	andApiKey:@"my-api-key"];
 ```
 ### 1.4. Construct your request for recommendations
@@ -79,8 +80,8 @@ Create a `TBPlacementRequest` for each placement (You can do this in your `ViewC
 TBPlacementRequest *placementReq = [TBPlacementRequest new];
 placementReq.name = @"below-article";  //replace this with your actual placement name
 placementReq.recCount = 4;  //replace this with the actual number of items required in your placement
-   
-[placementReq.recCount setThumbnailSize: CGSizeMake(10,10)] //Optionally, set an explicit required thumbnail size to get from Taboola server (to optimize bandwidth)   
+
+[placementReq.recCount setThumbnailSize: CGSizeMake(10,10)] //Optionally, set an explicit required thumbnail size to get from Taboola server (to optimize bandwidth)
 ```
 Create A `TBRecommendationsRequest` and add all of the previously created `TBPlacementRequest` objects to it
 
@@ -102,15 +103,15 @@ Execute the `fetchRecommendations` method of the singleton TaboolaApi object wit
 The code in the `onSuccess` callback should handle adding the items onto the view controller.
 
 ```
-[[TaboolaApi sharedInstance] fetchRecommendations:recomendationRequest 
+[[TaboolaApi sharedInstance] fetchRecommendations:recomendationRequest
 onSuccess:^(TBRecommendationResponse *response) {
 
 	// Iterate over the placements from the response. In this specific example we only have a single placement
 	TBPlacement *placement = response.placements.firstObject;
-	
+
 	//Get the list of items from each placments and add them to your view controller
 	[self yourOwnMethodToAddTaboolaItemsToView withListOfItems:placement.listOfItems];
-        
+
 } onFailure:^(NSError *error) {
 	// Handle errors here
 	NSLog(@"Something went wrong");
@@ -168,12 +169,12 @@ if (myTBItem != nil) {
 	[self.view addSubview:[myTBItem thumbnailView]];
 	[self.view addSubview:[myTBItem titleView]];
 
-	TBBrandingLabel *brandingLabel = [myTBItem brandingView]; 
+	TBBrandingLabel *brandingLabel = [myTBItem brandingView];
 	if (brandingLabel != nil){
 		[self.view addSubview:brandingLabel];
 	}
-	
-	TBDescriptionLabel *descriptionLabel = [myTBItem descriptionView]; 
+
+	TBDescriptionLabel *descriptionLabel = [myTBItem descriptionView];
 	if (descriptionLabel != nil){
 		[self.view addSubview: descriptionLabel];
 	}
@@ -201,7 +202,7 @@ Used for implementing pagination or infinite scroll (load more items as the user
 [[TaboolaApi sharedInstance] getNextBatchForPlacement:placement itemsCount:3 onSuccess:^(TBRecommendationResponse *response) {
 		// onSuccess: add those extra items on screen
 		// keep the response placements in case you'll need to get more items for these placments.
-    
+
     } onFailure:^(NSError *error) {
     	// handle errors
     }];
@@ -241,7 +242,7 @@ For example, you may choose to implement `TaboolaApiClickDelegate` in your view 
 
 Set the delegate correctly on the TaboolaApi SharedInstance:
 
-```   
+```
 [TaboolaApi sharedInstance].clickDelegate = self;
 ```
 
@@ -257,9 +258,19 @@ The `onItemClick` method will be called every time a user clicks a recommendatio
 ## 2. Example App
 This repository includes an example Android app which uses the `TaboolaApi`.
 
-## 4. SDK Reference
+## 3. SDK Reference
 [TaboolaApi Reference](doc/TaboolaApi_reference.md)
 
+## 4. GDPR
+In order to support the The EU General Data Protection Regulation (GDPR - https://www.eugdpr.org/) in Taboola Mobile SDK, application developer should show a pop up asking the user's permission for storing their personal data in the App. In order to control the user's personal data (to store in the App or not) there exists a flag `User_opt_out`. It's mandatory to set this flag when using the Taboola SDK. The way to set this flag depends on the type of SDK you are using. By default we assume no permission from the user on a pop up, so the personal data will not be saved.
+
+### 4.1. How to set the flag in the SDK integration
+Below you can find the way how to set the flag on API iOS SDK we support. It's recommended to put these lines alongside the other settings, such as publisher name, etc
+```javascript
+// Initialize the API calls
+    [[TaboolaApi sharedInstance] startWithPublisherID:@"the-publisher-name" andApiKey:@"4123415900f1234825a66812345cef18cc123427"];
+    [[TaboolaApi sharedInstance] setExtraProperties:@{@"apiParams":@"user.opt_out=true"}];
+```
 ## 5. License
 This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree to the terms of the License Agreement.  The full text of the license agreement can be found at [https://github.com/taboola/taboola-ios-api/blob/master/LICENSE](https://github.com/taboola/taboola-ios-api/blob/master/LICENSE).
 Copyright 2017 Taboola, Inc.  All rights reserved.
