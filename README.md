@@ -13,8 +13,8 @@
 
 ## Basic concepts
 The TaboolaApi allows you to get Taboola recommendations to display in your app.
-For each recommendation item TaboolaApi will provide pre-populated views, which you can style to match your app look and feel and place where needed within your app.
-The views will automatically handle evertything else: click handling, reporting visiblity back to Taboola's server and more.
+For each recommendation item TaboolaApi will provide pre-populated views, which you can style to match your app look and place where needed within your app.
+The views will automatically handle everything else: click handling, reporting visibility back to Taboola's server and more.
 
 Browse through the sample apps in this repository to see how the TaboolaApi can be implemented in different types of apps.
 ## 1. Getting Started
@@ -70,7 +70,7 @@ Beofre loading Taboola recommendations, apps should initialize TaboolaApi. Add t
 ```
 ### 1.4. Construct your request for recommendations
 
-Make the recommendations requests in your view controller, right before you show the Taboola recommendations. Do this as close as possible to when the recommendations are going to be displayed, avoid getting recommendations for screens which the app user might not view.
+Make the recommendations requests in your view controller, right before you show the Taboola recommendations. Do this as close as possible when the recommendations are going to be displayed, avoid getting recommendations on screens which the app user might not view.
 
 
 
@@ -134,7 +134,7 @@ Each `TBItem` contains a few UI elements:
 
 For each item, all available UI elements should be added to the screen.
 The UI elements can be placed on screen either via interface builder (storyboard) or manually via code.
-Use the correct `TBItem` method to initialize the UI element based on how you chose to add it to the screen.
+Use the correct `TBItem` method to initialize the UI element based on how you chose it to add to the screen.
 
 #### When using interface builder
 Assuming we have these properties defined as outels for interface builder UI elements:
@@ -194,7 +194,7 @@ Clicks on this UI element should be handled by Taboola, for that call `handleAtt
 ```
 
 ### 1.8 Request next batch of the recommendations for placement
-Used for implementing pagination or infinite scroll (load more items as the user scrolls down). The method gets the next batch of recommendation items for a specified placement. The name of the returned placement will have a "counter" added as a suffix. For example, if the original placement name was "article" the new name will be "article 1", next one "article 2", and so on. The counter is incremented on each successful fetch.
+Used for implementing pagination or infinite scroll (load more items when the user scrolls down). The method gets the next batch of recommendation items for a specified placement. The name of the returned placement will have a "counter" added as a suffix. For example, if the original placement name was "article" the new name will be "article 1", next one "article 2", and so on. The counter is incremented on each successful fetch.
 
 
 ```
@@ -272,5 +272,5 @@ Below you can find the way how to set the flag on API iOS SDK we support. It's r
     [[TaboolaApi sharedInstance] setExtraProperties:@{@"apiParams":@"user.opt_out=true"}];
 ```
 ## 5. License
-This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree to the terms of the License Agreement.  The full text of the license agreement can be found at [https://github.com/taboola/taboola-ios-api/blob/master/LICENSE](https://github.com/taboola/taboola-ios-api/blob/master/LICENSE).
+This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree with the terms of the License Agreement.  The full text of the license agreement can be found at [https://github.com/taboola/taboola-ios-api/blob/master/LICENSE](https://github.com/taboola/taboola-ios-api/blob/master/LICENSE).
 Copyright 2017 Taboola, Inc.  All rights reserved.
