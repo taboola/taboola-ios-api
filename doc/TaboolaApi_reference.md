@@ -72,6 +72,9 @@ Delegate method is called on every touch on the Placement.
 Return `true` - this will allow the app to implement a click-through and continue to the default behaviour.
 
 # TBRecommendationRequest
+
+The class represents a basis of recommendation fetch. It encapsulates all the required adjustments. At least one instance of `TBPlacementRequest` is required for TBRecommendationRequest to load recommendations.
+> Need a sample? [GUIDE](https://github.com/taboola/taboola-ios-api#14-construct-your-request-for-recommendations) to TBRecommendationRequest and TBPlacementRequest shows fundamentals of using TaboolaAPI
 ### `+ (instancetype)new`
 Initializes a Recommendation request. Parameters and Placements must be added to the request after initialization in order to fetch recommendations.
 
@@ -130,7 +133,8 @@ Adds a `TBPlacementRequest` to the `TBRecommendationRequest`. Up to 12 `TBPlacem
 * `itemsCount` — number of items in the Placement
 
 # TBPlacementRequest
-
+Each placement requires a `TBPlacementRequest` instance. Setting up the `TBPlacementRequest` is easy: specify the name and the number of recommendations to request. Additionally set the prefered thumbnail size. Finally add the `TBPlacementRequest` to the `TBRecommendationRequest` instance using method `addPlacementRequest:`.
+> Need a sample? [GUIDE](https://github.com/taboola/taboola-ios-api#14-construct-your-request-for-recommendations) to TBRecommendationRequest and TBPlacementRequest shows fundamentals of using TaboolaAPI
 ### `+ (instancetype)new`
 Initializes a `TBPlacementRequest` . Name and number of items must be added to the request after initialization. Creates request for a specific placement.
 
