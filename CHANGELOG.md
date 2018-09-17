@@ -1,3 +1,8 @@
+## [2.0.30] - 2018-09-16
+### Fixed
+- Loading few widgets in the same page.
+- Prefetching few widgets in different pages.
+
 ## [1.6.14] - 2017-02-21
 ### Changed
 - Cache images in NSCachesDirectory
