@@ -256,7 +256,7 @@ The `onItemClick` method will be called every time a user clicks a recommendatio
 **Best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which shows that content.**
 
 ## 2. Example App
-This repository includes an example Android app which uses the `TaboolaApi`.
+This repository includes an example iOS app which uses the `TaboolaApi`.
 
 ## 3. SDK Reference
 [TaboolaApi Reference](doc/TaboolaApi_reference.md)
