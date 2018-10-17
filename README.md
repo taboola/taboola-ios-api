@@ -60,6 +60,24 @@ Then, run the following command:
 $ pod install
 ```
 
+#### Installation with Carthage
+**[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks thus requires deployment target of minimum iOS 8.0**
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate Taboola into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+binary "https://s3-us-west-2.amazonaws.com/taboola-mobile-sdk/ios/Carthage.json" ~> 1.6.15
+```
+
+Run `carthage update` to build the framework and drag the built `TaboolaFramework.framework` into your Xcode project.
+
 ### 1.3. Initialize TaboolaApi
 
 Beofre loading Taboola recommendations, apps should initialize TaboolaApi. Add the following call in your `AppDelegate` class, `didFinishLaunchingWithOptions` method:
